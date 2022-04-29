@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid{
+    max-width: 800px;
+    background-color: white;
+    color: black;
+    box-shadow: 1px 2px 5px black, -1px -1px 5px black;
+}
+
+#niyi{
+    font-size: 20px;
+    color: gray;
+}
+
+#hr{
+    display: none;
+    margin: 10px 0;;
+    height: 2px;
+    background-color: black;
+}
+
+#speaker, #searchPhonetics{
+    display: none;
+}
