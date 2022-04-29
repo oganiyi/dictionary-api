@@ -22,6 +22,7 @@ async function dictionaryAPI(search){
     let searchTranscribe = document.querySelector("#searchTranscribe");
 
     for(let properties in data){
+        document.querySelector('.alert').style.display = 'none';
         searchWord.innerHTML = data[properties].word;
         document.querySelector("#hr").style.display = "block";
         for(let i in data[properties].phonetics){
