@@ -23,7 +23,13 @@ async function dictionaryAPI(search){
 
     for(let properties in data){
         document.querySelector('.alert').style.display = 'none';
-        searchWord.innerHTML = data[properties].word;
+        if(data[properties].word !== undefined){
+            searchWord.innerHTML = data[properties].word;
+        }
+        else{
+            searchWord.innerHTML = "This word does not exist. Kindly refresh the page and try another word."
+        }
+        
         document.querySelector("#hr").style.display = "block";
         for(let i in data[properties].phonetics){
             if(data[properties].phonetics[i].audio != ""){
@@ -39,7 +45,10 @@ async function dictionaryAPI(search){
             // }
 
         }
-        searchTranscribe.innerHTML = data[properties].phonetic;
+        if(data[properties].phonetic !== undefined){
+            searchTranscribe.innerHTML = data[properties].phonetic;
+        }
+        
 
         let wordDefinition;
         let arrOfWordDefinition = [];
