@@ -21,13 +21,20 @@ async function dictionaryAPI(search){
     let searchPhonetics = document.querySelector("#searchPhonetics");
     let searchTranscribe = document.querySelector("#searchTranscribe");
 
+    searchWord.innerHTML = '';
+    searchTranscribe.innerHTML = '';
+
+    let fullWordDefinition = document.querySelector("#fullWordDefinition");
+    fullWordDefinition.innerHTML = '';
+
+
     for(let properties in data){
-        document.querySelector('.alert').style.display = 'none';
         if(data[properties].word !== undefined){
             searchWord.innerHTML = data[properties].word;
         }
         else{
             searchWord.innerHTML = "This word does not exist. Kindly refresh the page and try another word."
+            speaker.style.display = "none";
         }
         
         document.querySelector("#hr").style.display = "block";
@@ -38,6 +45,9 @@ async function dictionaryAPI(search){
                 })
                 speaker.style.display = "inline-block";
                 break;
+            }
+            else{
+                speaker.style.display = "none";
             }
             // if(data[properties].phonetics[i].text){
             //     searchTranscribe.innerHTML = data[properties].phonetics[i].text;
@@ -54,14 +64,12 @@ async function dictionaryAPI(search){
         let arrOfWordDefinition = [];
         let partOfSpeech;
         let arrOfPartOfSpeech = [];
-        let fullWordDefinition;
         let synonyms;
         let antonyms;
         let arrOfSynonyms = [];
         let arrOfAntonyms = [];
 
         for(let numOfPartOfSpeech in data[properties].meanings){
-            fullWordDefinition = document.querySelector("#fullWordDefinition");
             partOfSpeech = data[properties].meanings[numOfPartOfSpeech].partOfSpeech;
             wordDefinition = data[properties].meanings[numOfPartOfSpeech].definitions;
             synonyms = data[properties].meanings[numOfPartOfSpeech].synonyms;
